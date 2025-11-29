@@ -143,7 +143,7 @@ Knowledge Base for Support:
 10. Payment:
     Update card details and retry if payment fails. Failures due to expired cards or insufficient balance.
 """
-)
+
 
 prompt = ChatPromptTemplate.from_messages([
     ("system", system_prompt),
@@ -156,5 +156,6 @@ tools = [support_faq_solver, create_support_ticket_supabase]
 agent = create_tool_calling_agent(llm, tools, prompt)
 
 agent_executor = AgentExecutor(agent=agent, tools=tools, verbose=True)
+
 
 print("✅ Agent Executor Ready!")
