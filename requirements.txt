@@ -1,23 +1,13 @@
-streamlit==1.32.0
-
-# LangChain ecosystem (compatible with pydantic v1)
-langchain==0.2.5
-langchain-core==0.2.5
-langchain-community==0.2.5
-langchain-google-genai==0.0.9
-
-# Google Gemini
-google-generativeai==0.7.2
-
-# Embeddings
-google-ai-generativelanguage==0.4.0
-
-# Supabase
-supabase==2.4.0
-postgrest==0.16.8
-storage3==0.7.7
-
-# Utilities
-python-dotenv==1.0.1
-requests==2.31.0
-pydantic==1.10.13
+streamlit==1.51.0
+python-dotenv==1.2.1
+supabase==2.24.0
+supabase-auth==2.24.0
+supabase-functions==2.24.0
+langchain==1.1.0
+langchain-core==1.1.0
+langchain-google-genai==0.3.2
+langchain-community==0.4.1
+pydantic==2.12.5
+pydantic-core==2.41.5
+numpy==2.3.5
+pandas==2.3.3
