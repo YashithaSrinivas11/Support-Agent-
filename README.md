@@ -3,36 +3,37 @@ Synapse AI is an intelligent Tier-1 Customer Support Agent powered by Gemini 2.5
 It retrieves answers from a knowledge base using RAG and escalates unresolved issues via ticket creation in Supabase.
 
 ⭐ 3. Architecture Diagram
-                     ┌─────────────────────────────┐
-                     │       User Interface         │
-                     │     (Streamlit Chat UI)      │
-                     └──────────────┬───────────────┘
-                                    │ User Query
-                                    ▼
-                     ┌─────────────────────────────┐
-                     │     LangChain Agent          │
-                     │  (Tool Calling Agent logic)  │
-                     └──────────────┬───────────────┘
-        Calls Tools                 │ LLM Reasoning
-                                    ▼
-        ┌──────────────────────────────────────────────────┐
-        │                TOOL LAYER (2 Tools)               │
-        │                                                   │
-        │  1️⃣ support_faq_solver                            │
-        │     - Uses Gemini Embeddings                     │
-        │     - Searches Supabase VectorStore              │
-        │     - Returns top FAQ answers                    │
-        │                                                   │
-        │  2️⃣ create_support_ticket_supabase               │
-        │     - Inserts user issue into Supabase table     │
-        │     - Used when no relevant answer is found      │
-        └──────────────┬───────────────────────────────────┘
-                        │
-   ┌────────────────────┼──────────────────────┐
-   │                    │                      │
-   ▼                    ▼                      ▼
-Supabase VectorStore   Supabase DB         Gemini LLM
-(RAG Search)           (Ticket Table)      (Response Generation)
+                 ┌─────────────────────────┐
+                 │   Streamlit Chat UI     │
+                 │ (User enters queries)   │
+                 └─────────────┬───────────┘
+                               │
+                               ▼
+                 ┌─────────────────────────┐
+                 │ LangChain Agent Layer   │
+                 │ (Gemini 2.5 Flash LLM)  │
+                 └──────┬────────┬────────┘
+                        │        │
+              Calls Tool│        │LLM reasoning
+                        │        │
+                        ▼        ▼
+        ┌───────────────────────────────┐
+        │         TOOL LAYER            │
+        │                               │
+        │ 1. support_faq_solver         │
+        │    - Gemini Embeddings        │
+        │    - Supabase VectorStore     │
+        │                               │
+        │ 2. create_support_ticket      │
+        │    - Inserts into Supabase DB │
+        └──────────────┬───────────────┘
+                       │
+         ┌─────────────┼───────────────┐
+         │             │               │
+         ▼             ▼               ▼
+ Supabase Vector DB   Supabase DB     Gemini
+ (RAG search)        (ticket table)   (LLM)
+
 
        Returns RAG context and ticket IDs back to Agent
        Agent returns polished answer to Streamlit UI
