@@ -1,44 +1,12 @@
 # Support-Agent-
 Synapse AI is an intelligent Tier-1 Customer Support Agent powered by Gemini 2.5 Flash, LangChain, Streamlit, and Supabase.
 It retrieves answers from a knowledge base using RAG and escalates unresolved issues via ticket creation in Supabase.
-
-⭐ 3. Architecture Diagram
-                 ┌─────────────────────────┐
-                 │   Streamlit Chat UI     │
-                 │ (User enters queries)   │
-                 └─────────────┬───────────┘
-                               │
-                               ▼
-                 ┌─────────────────────────┐
-                 │ LangChain Agent Layer   │
-                 │ (Gemini 2.5 Flash LLM)  │
-                 └──────┬────────┬────────┘
-                        │        │
-              Calls Tool│        │LLM reasoning
-                        │        │
-                        ▼        ▼
-        ┌───────────────────────────────┐
-        │         TOOL LAYER            │
-        │                               │
-        │ 1. support_faq_solver         │
-        │    - Gemini Embeddings        │
-        │    - Supabase VectorStore     │
-        │                               │
-        │ 2. create_support_ticket      │
-        │    - Inserts into Supabase DB │
-        └──────────────┬───────────────┘
-                       │
-         ┌─────────────┼───────────────┐
-         │             │               │
-         ▼             ▼               ▼
- Supabase Vector DB   Supabase DB     Gemini
- (RAG search)        (ticket table)   (LLM)
+ Architecture Diagram
+<img width="1536" height="1024" alt="ChatGPT Image Nov 29, 2025, 05_20_38 PM" src="https://github.com/user-attachments/assets/23cc2761-5c91-4d41-bce6-479a883c7323" />
 
 
-       Returns RAG context and ticket IDs back to Agent
-       Agent returns polished answer to Streamlit UI
 
-📝 4. README Document (Detailed)
+
 🧩 Overview
 
 Synapse AI is a support automation system designed to function as a Tier-1 customer support assistant.
@@ -169,7 +137,7 @@ GEMINI_API_KEY="..."
 
 Deploy 🚀
 
-🚀 6. Potential Improvements
+🚀 Potential Improvements
 🔮 Future Enhancements
 
 Add user authentication
