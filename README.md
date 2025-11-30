@@ -155,3 +155,6 @@ Add analytics dashboard in Streamlit
 Add voice-based support
 
 Add multilingual support
+Picture of AI Support Assistant
+<img width="1920" height="1080" alt="Screenshot (116)" src="https://github.com/user-attachments/assets/5f6af3a6-31ed-4a5a-b1a9-48e8af305be1" />
+
